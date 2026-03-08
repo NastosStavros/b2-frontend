@@ -1,0 +1,11 @@
+<button class="btn btn-primary mt-2" (click)="answer('a')">
+  Diese Anzeige wählen
+</button>
+
+<button class="btn btn-primary mt-2" (click)="answer('b')">
+  Diese Anzeige wählen
+</button>
+
+<div *ngIf="result" class="alert alert-info mt-4 text-center">
+  {{ result }}
+</div>
