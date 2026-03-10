@@ -1,0 +1,24 @@
+<h2 class="text-center pt-5 pb-5">{{ set.title }}</h2>
+
+<div class="container">
+
+    <ul class="list-group mb-4">
+        <li class="list-group-item" *ngFor="let person of set.persons">
+            {{ person.id }}. {{ person.text }}
+        </li>
+    </ul>
+
+    <div class="row g-4">
+        <div class="col-12 col-md-6" *ngFor="let article of set.articles">
+            <div class="card text-center p-4 position-relative">
+                <span class="position-absolute top-0 start-0 m-2 fw-bold">
+                    {{ article.id }}
+                </span>
+                <h6>{{ article.title }}</h6>
+                <span>{{ article.text }}</span>
+
+            </div>
+
+        </div>
+    </div>
+</div>
