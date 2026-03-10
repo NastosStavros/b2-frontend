@@ -9,14 +9,27 @@ import { NgIf } from '@angular/common';
 })
 export class LesenTeil1Einweisung {
 
-  result: string = '';
+  result1: string = '';
+  result2: string = '';
+  selected1: string = '';
 
-  answer(choice: string) {
-    if (choice === 'a') {
-      this.result = '✔ Richtig! Diese Anzeige passt zu Elena.';
+  answer1(choice: string) {
+
+  this.selected1 = choice;   // ← wichtig
+
+  if (choice === 'a') {
+    this.result1 = '✔ Richtig! Peter sucht eine Teilzeitstelle als Elektriker.';
+  } else {
+    this.result1 = '❌ Falsch. Hier geht es um eine Ausbildung.';
+  }
+}
+
+  answer2(choice: string) {
+    if (choice === 'c') {
+      this.result2 = '✔ Richtig! Maria sucht einen Deutschkurs für den Beruf.';
     } else {
-      this.result = '❌ Falsch. Diese Anzeige geht um Bewerbungen.';
+      this.result2 = '❌ Falsch. Hier wird eine Verkäuferin gesucht.';
     }
   }
-
+  
 }

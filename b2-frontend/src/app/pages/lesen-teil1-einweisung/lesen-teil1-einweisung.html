@@ -1,11 +1,117 @@
-<button class="btn btn-primary mt-2" (click)="answer('a')">
-  Diese Anzeige wählen
-</button>
+<div class="container mt-5">
 
-<button class="btn btn-primary mt-2" (click)="answer('b')">
-  Diese Anzeige wählen
-</button>
+  <h2 class="text-center mb-4">Lesen Teil 1 – Beispiel</h2>
 
-<div *ngIf="result" class="alert alert-info mt-4 text-center">
-  {{ result }}
-</div>
+  <div class="alert alert-info text-center mb-4">
+    <p><strong>So funktioniert Teil 1:</strong></p>
+    <p>
+      Lesen Sie zuerst die Person. Was genau braucht die Person? <br>Finden Sie dann die <strong>wichtigen
+        Informationen</strong> und
+      unterstreichen Sie sie.
+      Suchen Sie danach die Anzeige, die wirklich zu beiden Informationen passt.<br>
+      Personen in Lesen Teil 1 benötigen meistens Informationen zu <strong>Arbietsstellen, Ausbildungsangeboten oder
+        Gebäuden/
+        Räumen/ Büros</strong> für ihren Betrieb.
+    </p>
+    <p class="mb-0">
+      Achtung: Oft gibt es auch einen Text, der nur <strong>eine</strong> Information enthält.
+    </p>
+  </div>
+
+  <div class="card p-4 mb-4">
+    <h5 class="mb-3">Person</h5>
+    <p class="mb-0">
+      Peter hat eine Ausbildung als Elektriker abgeschlossen und sucht jetzt eine Teilzeitstelle.
+    </p>
+  </div>
+
+  <div class="row g-4">
+
+    <div class="col-12 col-md-6">
+      <div class="card p-4 h-100" [class.correct]="selected1 === 'a'" [class.wrong]="selected1 === 'b'">
+
+        <h5 class="mb-3">Elektriker in Teilzeit gesucht</h5>
+
+        <p class="ad-text">
+          Unsere Elektro-Firma sucht einen Elektriker für eine Teilzeitstelle.
+          Sie sollten eine abgeschlossene Ausbildung im Elektrobereich haben
+          und schon erste praktische Erfahrungen mitbringen.
+          Wir bieten flexible Arbeitszeiten und ein freundliches Team.
+        </p>
+
+        <button class="btn btn-primary mt-3" (click)="answer1('a')">
+          Diese Anzeige wählen
+        </button>
+
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <div class="card p-4 h-100">
+        <h5 class="mb-3">Handwerklich begabt? Wir suchen dich!</h5>
+        <p class="ad-text">
+          Unser Betrieb sucht motivierte Auszubildende im Bereich <span class="keyword">Elektrik</span>.
+          Die Ausbildung kann in Vollzeit oder <span class="keyword">Teilzeit</span> gemacht werden.
+          Wenn Sie Interesse an Technik haben und gern praktisch arbeiten,
+          freuen wir uns auf Ihre Bewerbung.
+        </p>
+        <button class="btn btn-primary mt-3" (click)="answer1('b')">
+          Diese Anzeige wählen
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="result1" class="alert alert-info mt-4 text-center">
+    {{ result1 }}
+  </div>
+
+  <h2 class="text-center mt-5 mb-4">Beispiel 2</h2>
+
+  <div class="card p-4 mb-4">
+    <h5 class="mb-3">Person</h5>
+    <p>
+      Maria arbeitet als Verkäuferin und möchte einen Kurs machen,
+      um ihre Deutschkenntnisse für den Beruf zu verbessern.
+    </p>
+  </div>
+
+  <div class="row g-4 mb-5">
+
+    <div class="col-12 col-md-6">
+      <div class="card p-4 h-100">
+        <h5 class="mb-3">Deutsch im Beruf verbessern</h5>
+        <p class="ad-text">
+          Dieser Kurs richtet sich an Menschen, die bereits arbeiten
+          und ihre Deutschkenntnisse im Berufsalltag verbessern möchten.
+          Sie lernen wichtige Wörter und typische Gespräche
+          am Arbeitsplatz.
+        </p>
+
+        <button class="btn btn-primary mt-3" (click)="answer2('c')">
+          Diese Anzeige wählen
+        </button>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <div class="card p-4 h-100">
+        <h5 class="mb-3">Verkäufer für Vollzeit gesucht</h5>
+        <p class="ad-text">
+          Unser Geschäft sucht eine freundliche Verkäuferin
+          oder einen Verkäufer in Vollzeit. Sie beraten Kunden,
+          präsentieren Waren und arbeiten im Verkaufsteam.
+          Erfahrung im Einzelhandel ist von Vorteil.
+        </p>
+
+        <button class="btn btn-primary mt-3" (click)="answer2('d')">
+          Diese Anzeige wählen
+        </button>
+      </div>
+
+    </div>
+
+    <div *ngIf="result2" class="alert alert-info mt-4 text-center">
+      {{ result2 }}
+    </div>
