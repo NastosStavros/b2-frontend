@@ -1,14 +1,24 @@
-<h2 class="text-center pt-5 pb-5">{{ set.title }}</h2>
+<h2 class="text-center pt-5 pb-2">{{ set.title }}</h2>
 
 <div class="container">
 
-    <ul class="list-group mb-4">
-        <li class="list-group-item" *ngFor="let person of set.persons">
-            {{ person.id }}. {{ person.text }}
-        </li>
-    </ul>
+    <li class="list-group-item d-flex justify-content-between align-items-center mb-1"
+        *ngFor="let person of set.persons">
 
-    <div class="row g-4">
+        <span>
+            {{ person.id }}. {{ person.text }}
+        </span>
+
+        <select #dropdown class="form-select w-auto" (change)="selectAnswer(person.id, dropdown.value)">
+            <option value="">–</option>
+            <option *ngFor="let article of set.articles" [value]="article.id">
+                {{ article.id }}
+            </option>
+        </select>
+
+    </li>
+
+    <div class="row g-4 mt-1">
         <div class="col-12 col-md-6" *ngFor="let article of set.articles">
             <div class="card text-center p-4 position-relative">
                 <span class="position-absolute top-0 start-0 m-2 fw-bold">

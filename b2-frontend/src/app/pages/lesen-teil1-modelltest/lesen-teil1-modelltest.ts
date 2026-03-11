@@ -10,4 +10,10 @@ import { NgFor } from '@angular/common';
 })
 export class LesenTeil1Modelltest {
   set = readingTeil1Sets[0];
+  answers: { [key: number]: string } = {};
+
+  selectAnswer(personId: number, articleId: string ) {
+    this.answers[personId] = articleId
+    console.log(this.answers);
+  }
 }
