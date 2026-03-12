@@ -7,6 +7,8 @@
 
         <span>
             {{ person.id }}. {{ person.text }}
+            <span *ngIf="results[person.id] === true">✔</span>
+            <span *ngIf="results[person.id] === false">✖</span>
         </span>
 
         <select #dropdown class="form-select w-auto" (change)="selectAnswer(person.id, dropdown.value)">
@@ -31,4 +33,7 @@
 
         </div>
     </div>
+    <button class="btn btn-primary mt-4 d-block mx-auto" [disabled]="!areAllAnswered()" (click)="checkAnswers()">
+        Lösungen prüfen
+    </button>
 </div>
