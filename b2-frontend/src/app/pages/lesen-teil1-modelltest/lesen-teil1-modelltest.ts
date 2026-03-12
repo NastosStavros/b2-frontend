@@ -29,4 +29,8 @@ export class LesenTeil1Modelltest {
   areAllAnswered() {
     return Object.keys(this.answers).length === this.set.persons.length;
   }
+
+  getScore() {
+    return Object.values(this.results).filter(r => r === true).length;
+  }
 }

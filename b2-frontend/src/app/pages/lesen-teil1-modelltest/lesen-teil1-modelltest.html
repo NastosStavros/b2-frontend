@@ -36,4 +36,8 @@
     <button class="btn btn-primary mt-4 d-block mx-auto" [disabled]="!areAllAnswered()" (click)="checkAnswers()">
         Lösungen prüfen
     </button>
+
+    <p class="text-center mt-3">
+        {{ getScore() }} / 5
+    </p>
 </div>
