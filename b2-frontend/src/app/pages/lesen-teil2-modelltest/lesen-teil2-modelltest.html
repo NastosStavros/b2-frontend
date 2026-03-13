@@ -1,1 +1,59 @@
-<p>lesen-teil2-modelltest works!</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div *ngFor="let text of readingSet.texts" class="mb-5 card">
+                <div class="card-body">
+                    <h3 class="mt-3 mb-3 text-center">{{ text.title }}</h3>
+                    <p class="mb-4 text-center">{{ text.content }}</p>
+                </div>
+
+                <div *ngFor="let q of readingSet.questions" class="mb-4 ps-4">
+
+                    <div *ngIf="q.textId === text.id">
+
+                        <p>{{ q.question }}</p>
+
+                        <!-- TRUE / FALSE -->
+
+                        <div *ngIf="q.type === 'truefalse'">
+                            <div class="d-flex gap-3">
+                                <label class="d-block mb-2">
+                                    <input type="radio" [name]="'question-' + q.id" (change)="answers[q.id] = 'true'" />
+                                    True
+                                </label>
+
+                                <label class="d-block">
+                                    <input type="radio" [name]="'question-' + q.id"
+                                        (change)="answers[q.id] = 'false'" />
+                                    False
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- MULTIPLE CHOICE -->
+
+                        <div *ngIf="q.type === 'multiple'">
+
+                            <div *ngFor="let option of q.options">
+
+                                <label class="d-block">
+                                    <input type="radio" [name]="'question-' + q.id" (change)="answers[q.id] = option" />
+                                    {{ option }}
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button class="btn btn-primary mt-4">Antworten prüfen</button>
+
+        </div>
+    </div>
+</div>
