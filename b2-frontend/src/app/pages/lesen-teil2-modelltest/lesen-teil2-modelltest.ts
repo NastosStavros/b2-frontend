@@ -9,6 +9,27 @@ import { NgFor, NgIf } from '@angular/common';
   styleUrl: './lesen-teil2-modelltest.scss',
 })
 export class LesenTeil2Modelltest {
-  readingSet = readingTeil2Sets[0];
+  readingSet = readingTeil2Sets[1];
   answers: { [key: number]: string } = {};
+  results: { [key: number]: boolean } = {};
+  score: number = 0
+
+  checkAnswers() {
+    this.score = 0;
+
+    this.readingSet.questions.forEach(question => {
+      console.log(this.answers[question.id], question.correctAnswer);
+      if (this.answers[question.id] === question.correctAnswer) {
+        this.results[question.id] = true;
+        this.score++;
+      }
+      else {
+        this.results[question.id] = false
+      }
+    });
+  }
+
+  allAnswered(): boolean {
+    return this.readingSet.questions.every(q => this.answers[q.id] !== undefined);
+  }
 }

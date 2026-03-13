@@ -13,6 +13,8 @@
                     <div *ngIf="q.textId === text.id">
 
                         <p>{{ q.question }}</p>
+                        <p *ngIf="results[q.id]">richtig</p>
+                        <p *ngIf="results[q.id] !== undefined && !results[q.id]">falsch</p>
 
                         <!-- TRUE / FALSE -->
 
@@ -38,7 +40,7 @@
                             <div *ngFor="let option of q.options">
 
                                 <label class="d-block">
-                                    <input type="radio" [name]="'question-' + q.id" (change)="answers[q.id] = option" />
+                                    <input type="radio" [name]="'question-' + q.id" (change)="answers[q.id] = option[0]" />
                                     {{ option }}
                                 </label>
 
@@ -52,8 +54,8 @@
 
             </div>
 
-            <button class="btn btn-primary mt-4">Antworten prüfen</button>
-
+            <button class="btn btn-primary mt-4" (click)="checkAnswers()" [disabled]="!allAnswered()">Antworten prüfen</button>
+            <p>Score: {{ score }} / {{ readingSet.questions.length }}</p>
         </div>
     </div>
 </div>
