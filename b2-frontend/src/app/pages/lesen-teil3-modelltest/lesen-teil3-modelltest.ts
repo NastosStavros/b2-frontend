@@ -10,5 +10,27 @@ import { readingTeil3Sets } from '../../data/reading-teil3-sets';
 })
 export class LesenTeil3Modelltest {
   readingSet = readingTeil3Sets[0];
-  currentQuestion = this.readingSet.questions[0];
+  currentIndex = 0;
+  currentQuestion = this.readingSet.questions[this.currentIndex];
+
+  options = ['a', 'b', 'c', 'd', 'e', 'f', 'x'];
+  answers: { [key: number]: string } = {};
+
+  saveAnswer(option: string) {
+    this.answers[this.currentQuestion.id] = option;
+  }
+
+  prevQuestion() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.currentQuestion = this.readingSet.questions[this.currentIndex];
+    }
+  }
+
+  nextQuestion() {
+    if (this.currentIndex < this.readingSet.questions.length - 1) {
+      this.currentIndex++;
+      this.currentQuestion = this.readingSet.questions[this.currentIndex];
+    }
+  }
 }

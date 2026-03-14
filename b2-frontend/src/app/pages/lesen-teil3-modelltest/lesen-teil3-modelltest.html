@@ -1,4 +1,4 @@
-<h2 class="text-center pt-5 pb-2">Lesen Teil 3</h2>
+<h2 class="text-center pt-1 pb-2">Lesen Teil 3</h2>
 
 <div class="container">
 
@@ -8,14 +8,14 @@
 
   <div class="d-flex align-items-center justify-content-center">
 
-    <div class="me-3">
+    <button class="btn btn-outline-secondary me-3" (click)="prevQuestion()">
       ←
-    </div>
+    </button>
 
     <div class="card w-75 p-4 mb-5">
 
       <div class="mb-3 text-muted">
-        Frage 1 / 4
+        Frage {{ currentIndex + 1 }} / {{ readingSet.questions.length }}
       </div>
 
       <h5 class="fw-bold">
@@ -26,16 +26,38 @@
         {{ currentQuestion.questionText }}
       </p>
 
+      <p class="mt-3 fw-semibold">
+        Wählen Sie eine Antwort:
+      </p>
+
+      <div class="d-flex flex-wrap gap-3">
+
+        <label *ngFor="let option of options">
+          <input type="radio" name="answer" [value]="option" [checked]="answers[currentQuestion.id] === option">
+          {{ option }}
+        </label>
+
+      </div>
+
     </div>
 
-    <div class="ms-3">
+    <button class="btn btn-outline-secondary ms-3" (click)="nextQuestion()">
       →
+    </button>
+
+  </div>
+
+  <div class="row">
+    <div *ngFor="let a of readingSet.answers" class="col-12 col-md-6">
+      <div class="card p-3 m-2">
+        <h5>{{ a.letter }}) {{ a.author }}</h5>
+
+        <p>
+          {{ a.text }}
+        </p>
+
+      </div>
+      <!-- Antworten kommen hier -->
     </div>
-
   </div>
-
-  <div>
-    <!-- Antworten kommen hier -->
-  </div>
-
 </div>
