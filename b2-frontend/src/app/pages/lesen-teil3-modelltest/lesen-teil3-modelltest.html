@@ -33,8 +33,17 @@
       <div class="d-flex flex-wrap gap-3">
 
         <label *ngFor="let option of options">
-          <input type="radio" name="answer" [value]="option" [checked]="answers[currentQuestion.id] === option">
+          <input type="radio" name="answer" [value]="option" [checked]="answers[currentQuestion.id] === option"
+            (change)="saveAnswer(option)">
+
           {{ option }}
+
+          <span *ngIf="showResults && answers[currentQuestion.id] === option">
+            {{
+            option === currentQuestion.correctAnswer ? "✅" : "❌"
+            }}
+          </span>
+
         </label>
 
       </div>
@@ -58,6 +67,12 @@
 
       </div>
       <!-- Antworten kommen hier -->
+    </div>
+    <button class="btn btn-primary mt-4" (click)="checkAnswers()" [disabled]="!allAnswered()">
+      Antworten prüfen
+    </button>
+    <div *ngIf="showResults" class="mt-3">
+      Ergebnis: {{ getScore() }} / {{ readingSet.questions.length }}
     </div>
   </div>
 </div>

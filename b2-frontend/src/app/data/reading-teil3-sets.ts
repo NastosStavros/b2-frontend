@@ -2,7 +2,7 @@ interface Question {
     id: number
     name: string
     questionText: string
-    correctAnswer: number
+    correctAnswer: string
 }
 
 interface AnswerText {
@@ -24,25 +24,25 @@ export const readingTeil3Sets: ReadingTeil3Set[] = [
                 id: 1,
                 name: "Anna",
                 questionText: "Hallo zusammen, ich arbeite seit zwei Jahren in einem kleinen Betrieb. In letzter Zeit müssen wir immer häufiger Überstunden machen, weil viele Aufträge gleichzeitig erledigt werden müssen. Mein Chef sagt, dass das im Moment einfach nötig ist. Ich frage mich aber, ob es Regeln dafür gibt. Müssen Überstunden immer bezahlt werden oder kann man sie auch später als Freizeit nehmen? Wie ist das in euren Firmen geregelt?",
-                correctAnswer: 1
+                correctAnswer: "a"
             },
             {
                 id: 2,
                 name: "Lukas",
                 questionText: "Ich arbeite seit kurzem teilweise im Homeoffice. Das gefällt mir eigentlich sehr gut, weil ich mir den Weg zur Arbeit spare. Jetzt bin ich aber unsicher, wie es mit den Arbeitszeiten ist. Muss ich zu festen Zeiten arbeiten wie im Büro oder kann ich meine Zeit frei einteilen? Mein Arbeitgeber sagt nur, dass ich meine Aufgaben erledigen soll. Wie läuft das bei euch?",
-                correctAnswer: 2
+                correctAnswer: "f"
             },
             {
                 id: 3,
                 name: "Maria",
                 questionText: "In meinem Team gibt es in letzter Zeit immer öfter Konflikte. Manche Kollegen sprechen nicht offen über Probleme, sondern beschweren sich hinter dem Rücken der anderen. Das führt zu einer schlechten Stimmung bei der Arbeit. Ich frage mich, wie man solche Konflikte am Arbeitsplatz besser lösen kann. Habt ihr Erfahrungen oder Tipps?",
-                correctAnswer: 3
+                correctAnswer: "c"
             },
             {
                 id: 4,
                 name: "David",
                 questionText: "Unsere Firma überlegt gerade, auch samstags zu arbeiten, weil wir mehr Aufträge bekommen haben. Einige Kollegen finden das nicht gut, weil sie am Wochenende Zeit mit der Familie verbringen möchten. Ich frage mich, ob der Arbeitgeber einfach entscheiden kann, dass wir samstags arbeiten müssen, oder ob es dafür bestimmte Regeln gibt.",
-                correctAnswer: 0
+                correctAnswer: "d"
             }
         ],
         answers: [
