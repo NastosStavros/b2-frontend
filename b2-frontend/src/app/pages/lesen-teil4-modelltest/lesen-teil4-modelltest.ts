@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { readingTeil4Sets } from '../../data/reading-teil4-sets';
 
 @Component({
   selector: 'app-lesen-teil4-modelltest',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './lesen-teil4-modelltest.scss',
 })
 export class LesenTeil4Modelltest {
-
+  sets = readingTeil4Sets
 }
