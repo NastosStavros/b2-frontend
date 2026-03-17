@@ -1,8 +1,90 @@
-<div class="text-center mt-4">
+<div class="container mt-4">
 
-    <div>
-        <h1>
-            Lesen Teil 4
-        </h1>
+    <h1 class="text-center mb-4">Lesen Teil 4</h1>
+
+    <!-- TEXT (groß + scrollbar) -->
+    <div class="card p-4 mb-4 text-container">
+
+        <h4>{{ currentSet.title }}</h4>
+        <p class="text-muted">{{ currentSet.date }}</p>
+
+        <!-- Teilnehmer -->
+        <div class="mb-3 ">
+            <strong>Anwesende:</strong>
+            <div *ngFor="let p of currentSet.participants">
+                {{ p.name }} – {{ p.role }}
+            </div>
+        </div>
+
+        <!-- Protokollant -->
+        <div class="mb-3">
+            <strong>Protokoll:</strong>
+            <div *ngFor="let p of currentSet.participants">
+                <span *ngIf="p.role.toLowerCase().includes('protokoll')">
+                    {{ p.name }}
+                </span>
+            </div>
+        </div>
+
+        <!-- Agenda -->
+        <div *ngFor="let item of currentSet.agendaItems">
+            <h6>{{ item.agendaTitle }}</h6>
+            <p>{{ item.agendaText }}</p>
+        </div>
+
     </div>
+
+    <!-- EINZELNE FRAGE -->
+    <div class="card p-4 text-center">
+
+        <p>
+            <strong>
+                {{ currentIndex + 1 }}. {{ currentSet.questions[currentIndex].questionText }}
+            </strong>
+
+            <span *ngIf="showResults">
+
+                <span
+                    *ngIf="currentSet.questions[currentIndex].userAnswer === currentSet.questions[currentIndex].correctAnswer">
+                    ✅
+                </span>
+
+                <span
+                    *ngIf="currentSet.questions[currentIndex].userAnswer !== currentSet.questions[currentIndex].correctAnswer">
+                    ❌
+                </span>
+
+            </span>
+        </p>
+
+        <div class="options-container mx-auto text-start">
+            <div *ngFor="let option of currentSet.questions[currentIndex].options">
+                <label class="d-block">
+                    <input type="radio" (change)="currentSet.questions[currentIndex].userAnswer = option.id"
+                        [checked]="currentSet.questions[currentIndex].userAnswer === option.id"
+                        name="question{{currentIndex}}">
+                    {{ option.id }}) {{ option.optionText }}
+                </label>
+            </div>
+        </div>
+
+        <!-- NAVIGATION -->
+        <div class="d-flex justify-content-between mt-4">
+
+            <button class="btn btn-outline-primary" (click)="prevQuestion()">
+                ← Zurück
+            </button>
+
+            <button class="btn btn-outline-primary" (click)="showResults = true" [disabled]="!allAnswered()">
+                Ergebnisse anzeigen
+            </button>
+
+            <button class="btn btn-outline-primary" (click)="nextQuestion()">
+                Weiter →
+            </button>
+
+        </div>
+
+    </div>
+
 </div>
