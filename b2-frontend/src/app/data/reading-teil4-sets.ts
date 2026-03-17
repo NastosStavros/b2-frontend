@@ -38,7 +38,7 @@ export const readingTeil4Sets: ReadingTeil4Set[] = [
             { name: "Daniel Krüger", role: "Teamleiter Produktion" },
             { name: "Nina Berger", role: "Weiterbildungskoordination" },
             { name: "Ali Demir", role: "Mitarbeitervertretung" },
-            { name: "Lisa Brandt", role: "Protokollantin" }
+            { name: "Lisa Brandt", role: "Protokollantin" },
         ],
 
         agendaItems: [
