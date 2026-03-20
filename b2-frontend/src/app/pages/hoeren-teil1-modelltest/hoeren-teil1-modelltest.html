@@ -1,0 +1,61 @@
+<div class="container">
+
+  <div class="text-center">
+    <h1>Hören – Teil 1</h1>
+    <p>Arbeitsabläufe, Probleme und Vorschläge verstehen</p>
+  </div>
+
+  <div class="card">
+    <h2>Info</h2>
+    <p>In Hören Teil 1 hören Sie drei Gespräche...</p>
+  </div>
+
+  <div class="card">
+    <button (click)="playAudio()" class="btn primary-btn">
+      Audio abspielen
+    </button>
+  </div>
+
+  <div class="card">
+
+    <div *ngFor="let q of currentSet.questions" class="question-block">
+
+      <p><strong>{{ q.id }}.</strong> {{ q.question }}</p>
+
+      <!-- TRUE / FALSE -->
+      <div *ngIf="q.type === 'true-false'">
+        <label>
+          <input type="radio" [name]="'q' + q.id" (change)="selectAnswer(q.id, 'richtig')" />
+          richtig
+        </label>
+
+        <label>
+          <input type="radio" [name]="'q' + q.id" (change)="selectAnswer(q.id, 'falsch')" />
+          falsch
+        </label>
+      </div>
+
+      <!-- MULTIPLE CHOICE -->
+      <div *ngIf="q.type === 'multiple-choice'">
+        <label *ngFor="let option of q.options">
+          <input type="radio" [name]="'q' + q.id" (change)="selectAnswer(q.id, option)" />
+          {{ option }}
+        </label>
+      </div>
+
+      <!-- FEEDBACK (nur einmal!) -->
+      <p *ngIf="results[q.id] === true" style="color: green;">
+        ✅ Richtig
+      </p>
+
+      <p *ngIf="results[q.id] === false" style="color: red;">
+        ❌ Falsch
+      </p>
+
+    </div>
+
+    <button (click)="checkAnswers()">Antwort prüfen</button>
+
+  </div>
+
+</div>
